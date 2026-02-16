@@ -1,0 +1,85 @@
+# ===============================
+# Build Directories
+# ===============================
+build/
+cmake-build-*/
+out/
+dist/
+
+# ===============================
+# CMake Files
+# ===============================
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+CTestTestfile.cmake
+
+# ===============================
+# Executables & Binaries
+# ===============================
+*.exe
+*.out
+*.app
+*.so
+*.a
+*.o
+*.obj
+enterprise_ai
+
+# ===============================
+# Logs
+# ===============================
+*.log
+logs/
+
+# ===============================
+# IDE - VSCode
+# ===============================
+.vscode/
+*.code-workspace
+
+# ===============================
+# IDE - CLion
+# ===============================
+.idea/
+
+# ===============================
+# OS Files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Debug / Temp
+# ===============================
+*.swp
+*.tmp
+*.bak
+*.cache
+
+# ===============================
+# Coverage Reports
+# ===============================
+coverage/
+*.gcda
+*.gcno
+*.info
+
+# ===============================
+# Docker
+# ===============================
+docker-compose.override.yml
+
+# ===============================
+# Environment / Secrets
+# ===============================
+.env
+.env.*
+config/*.local.yaml
+
+# ===============================
+# Third Party (if built locally)
+# ===============================
+third_party/build/
