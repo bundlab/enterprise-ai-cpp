@@ -1,11 +1,11 @@
-#include "ai/inference_engine.hpp"
+#include "services/ai_service.h"
 
-class AIService {
-private:
-    InferenceEngine engine;
+namespace enterprise_ai {
+namespace services {
 
-public:
-    std::string predict(const std::string& input) {
-        return engine.run(input);
-    }
-};
+std::string AIService::predict(const std::string& input) {
+    return "AI prediction result for: " + input;
+}
+
+} // namespace services
+} // namespace enterprise_ai
