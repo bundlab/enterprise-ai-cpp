@@ -1,29 +1,29 @@
 cmake_minimum_required(VERSION 3.16)
-project(EnterpriseAI LANGUAGES CXX)
+project(enterprise_ai VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(enterprise_ai
+# Add source files
+set(SOURCES
     src/main.cpp
     src/api/http_server.cpp
-    src/ai/model.cpp
     src/services/ai_service.cpp
+    src/ai/model.cpp
     src/infrastructure/logger.cpp
     src/infrastructure/config.cpp
 )
 
-# Key change: include the project root + src + third_party
+# 1️⃣ Create the executable first
+add_executable(enterprise_ai ${SOURCES})
+
+# 2️⃣ Then add include directories
 target_include_directories(enterprise_ai PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}           # project root → allows #include "src/api/http_server.h" if you want
-    ${CMAKE_CURRENT_SOURCE_DIR}/src       # ← this makes #include "api/http_server.h" work from everywhere
-    ${CMAKE_CURRENT_SOURCE_DIR}/third_party
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/third_party
+    ${Boost_INCLUDE_DIRS}   # if using Boost
 )
 
-find_package(Threads REQUIRED)
-target_link_libraries(enterprise_ai PRIVATE Threads::Threads)
-
-# Optional but recommended: enable more warnings
-if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(enterprise_ai PRIVATE -Wall -Wextra -Wpedantic)
-endif()
+# 3️⃣ Then link libraries
+find_package(Boost REQUIRED COMPONENTS system)
+target_link_libraries(enterprise_ai PRIVATE Boost::system)
