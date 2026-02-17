@@ -2,11 +2,10 @@
 #define ENTERPRISE_AI_HTTP_SERVER_H
 
 #include <string>  // or whatever you need
+#include "services/ai_service.h"
 
 namespace enterprise_ai {
-namespace services {
-    class AIService;  // forward declaration is usually enough
-}
+
 
 namespace api {
 

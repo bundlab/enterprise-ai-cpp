@@ -2,12 +2,11 @@
 #ifndef ENTERPRISE_AI_API_HTTP_SERVER_H
 #define ENTERPRISE_AI_API_HTTP_SERVER_H
 
-        // or "crow_all.h" depending on your setup
+#include "services/ai_service.h"
+
 
 namespace enterprise_ai {
-namespace services {
-    class AIService;       // forward declaration
-}
+
 
 namespace api {
 
