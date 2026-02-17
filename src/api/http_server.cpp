@@ -1,30 +1,25 @@
-#include "http_server.h"
-#include "../services/ai_service.h"
-#include "crow_all.h"
+// http_server.h
+#ifndef ENTERPRISE_AI_API_HTTP_SERVER_H
+#define ENTERPRISE_AI_API_HTTP_SERVER_H
 
-#include <string>
+        // or "crow_all.h" depending on your setup
 
 namespace enterprise_ai {
+namespace services {
+    class AIService;       // forward declaration
+}
+
 namespace api {
 
-void HttpServer::run(int port) {
-    crow::SimpleApp app;
-    services::AIService aiService;
+class HttpServer {
+public:
+    void run(int port = 8080);
 
-    CROW_ROUTE(app, "/health")
-    ([] {
-        return crow::response(200, "OK");
-    });
-
-    CROW_ROUTE(app, "/ai/predict")
-        .methods(crow::HTTPMethod::Post)
-    ([&aiService](const crow::request& req) {
-        auto result = aiService.predict(req.body);
-        return crow::response(200, result);
-    });
-
-    app.port(port).multithreaded().run();
-}
+private:
+    services::AIService aiService_;  // ← must exist as member
+};
 
 } // namespace api
 } // namespace enterprise_ai
+
+#endif

@@ -4,7 +4,8 @@ namespace enterprise_ai {
 namespace services {
 
 std::string AIService::predict(const std::string& input) {
-    return "AI prediction result for: " + input;
+    // Replace this with real AI inference logic
+    return "Prediction result for: " + input;
 }
 
 } // namespace services
