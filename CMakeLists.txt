@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
-project(enterprise_ai VERSION 1.0 LANGUAGES CXX)
+
+project(enterprise_ai LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Add source files
+# Source files
 set(SOURCES
     src/main.cpp
     src/api/http_server.cpp
@@ -14,16 +15,15 @@ set(SOURCES
     src/infrastructure/config.cpp
 )
 
-# 1️⃣ Create the executable first
+# Create executable
 add_executable(enterprise_ai ${SOURCES})
 
-# 2️⃣ Then add include directories
+# Include directories
 target_include_directories(enterprise_ai PRIVATE
     ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_SOURCE_DIR}/third_party
-    ${Boost_INCLUDE_DIRS}   # if using Boost
 )
 
-# 3️⃣ Then link libraries
-find_package(Boost REQUIRED COMPONENTS system)
-target_link_libraries(enterprise_ai PRIVATE Boost::system)
+# Enable pthread (needed by Crow)
+find_package(Threads REQUIRED)
+target_link_libraries(enterprise_ai PRIVATE Threads::Threads)
