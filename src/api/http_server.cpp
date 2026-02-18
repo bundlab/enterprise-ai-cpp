@@ -4,15 +4,20 @@
 
 namespace enterprise_ai::api {
 
-void HttpServer::run(int port) {
-    crow::SimpleApp app;
+    void HttpServer::run(int port) {
+        crow::SimpleApp app;
 
-    CROW_ROUTE(app, "/")
-    ([]() {
-        return "Enterprise AI running";
-    });
+        CROW_ROUTE(app, "/")
+        ([]() {
+            return "Enterprise AI running";
+        });
 
-    app.port(port).multithreaded().run();
-}
+        CROW_ROUTE(app, "/health")
+        ([]() {
+            return crow::response(200, "OK");
+        });
+
+        app.port(port).multithreaded().run();
+    }
 
 } // namespace enterprise_ai::api
