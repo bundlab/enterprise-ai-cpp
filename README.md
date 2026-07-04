@@ -26,7 +26,7 @@ Built with enterprise standards in mind.
 ## 🏗 Architecture Overview
 
 The system follows a Clean Architecture + Modular Microservice Style:
-
+```text
 enterprise-ai-cpp/
 │
 ├── core/               # AI core engine
@@ -39,20 +39,15 @@ enterprise-ai-cpp/
 ├── docs/               # Documentation
 ├── CMakeLists.txt
 └── main.cpp
-
+```
 ## 🔹 Architectural Principles
 
-Clean separation of concerns
-
-Dependency Injection
-
-SOLID principles
-
-Thread-safe components
-
-GPU acceleration support (CUDA-ready)
-
-CI/CD compatible
+- Clean separation of concerns
+- Dependency Injection
+- SOLID principles
+- Thread-safe components
+- GPU acceleration support (CUDA-ready)
+- CI/CD compatible
 
 ## 🧠 Core Features
 
@@ -108,19 +103,19 @@ make -j$(nproc)
 ./enterprise_ai
 
 ## 🧪 Running Tests
+```bash
 ctest
-
-
+```
 or
-
+```bash
 ./tests/runTests
-
+```
 ## 🐳 Docker Deployment
+```bash
 docker build -t enterprise-ai .
 docker run -p 8080:8080 enterprise-ai
-
+```
 ## 🔥 GPU Acceleration (Optional)
-
 This project supports NVIDIA CUDA acceleration.
 
 Requirements:
@@ -130,10 +125,10 @@ Requirements:
 - Proper CUDAToolkit_ROOT configured
 
 Example:
-
-- export CUDAToolkit_ROOT=/usr/local/cuda
-- cmake ..
-
+```bash
+export CUDAToolkit_ROOT=/usr/local/cuda
+cmake ..
+```
 ## 🔐 Enterprise-Grade Features
 
 - Thread-safe AI pipeline
@@ -172,15 +167,11 @@ To add a new model:
 
 ## 📈 Roadmap
 
- ONNX Runtime Integration
-
- TensorRT optimization
-
- Distributed inference support
-
- Kubernetes Helm chart
-
- Model versioning system
+- ONNX Runtime Integration
+- TensorRT optimization
+- Distributed inference support
+- Kubernetes Helm chart
+- Model versioning system
 
 ## 🤝 Contributing
 
@@ -199,9 +190,10 @@ Push and create Pull Request
 MIT License
 
 ## 👨‍💻 Author
+bundlab
 
-Abdullahi Bundi
 AI Systems Architect
+
 Enterprise AI & High-Performance Computing
 
 ⭐ If you find this project useful, please give it a star on GitHub!
