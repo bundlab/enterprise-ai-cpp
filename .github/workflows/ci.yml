@@ -42,6 +42,9 @@ jobs:
       - name: Build
         run: cmake --build build
 
+      - name: Run Unit Tests
+        run: ctest --test-dir build --output-on-failure
+
       - name: Run Application Smoke Test
         run: |
           ./build/enterprise_ai &
