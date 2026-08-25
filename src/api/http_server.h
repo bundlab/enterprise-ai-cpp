@@ -1,11 +1,12 @@
 #ifndef ENTERPRISE_AI_HTTP_SERVER_H
 #define ENTERPRISE_AI_HTTP_SERVER_H
 
-#include <string>  // or whatever you need
+#include <string>
+
+#include "core/health_check.hpp"
 #include "services/ai_service.h"
 
 namespace enterprise_ai {
-
 
 namespace api {
 
@@ -15,6 +16,7 @@ public:
 
 private:
     services::AIService ai_service_;   // ← lives as long as the HttpServer object
+    core::HealthCheck health_check_;
 };
 
 } // api
